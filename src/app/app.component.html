@@ -1,0 +1,47 @@
+<div class="kanban-board">
+  <div
+    class="kanban-column"
+    (dragover)="onDragStart($event)"
+    (drop)="onDrop($event, 'To-Do')"
+  >
+    <h2>To Do</h2>
+    @if (getTasks('To-Do').length) { @for (task of getTasks('To-Do'); track
+    task.taskId) {
+    <div class="kanban-item" (dragstart)="onDrag(task)" draggable="true">
+      {{ task.taskName }}
+    </div>
+    } } @else {
+    <p>No Tasks Found.</p>
+    }
+  </div>
+  <div
+    class="kanban-column"
+    (dragover)="onDragStart($event)"
+    (drop)="onDrop($event, 'In-Progress')"
+  >
+    <h2>In Progress</h2>
+    @if (getTasks('In-Progress').length) { @for (task of
+    getTasks('In-Progress'); track task.taskId) {
+    <div class="kanban-item" (dragstart)="onDrag(task)" draggable="true">
+      {{ task.taskName }}
+    </div>
+    } } @else {
+    <p>No Tasks Found.</p>
+    }
+  </div>
+  <div
+    class="kanban-column"
+    (dragover)="onDragStart($event)"
+    (drop)="onDrop($event, 'Done')"
+  >
+    <h2>Done</h2>
+    @if (getTasks('Done').length) { @for (task of getTasks('Done'); track
+    task.taskId) {
+    <div class="kanban-item" (dragstart)="onDrag(task)" draggable="true">
+      {{ task.taskName }}
+    </div>
+    } } @else {
+    <p>No Tasks Found.</p>
+    }
+  </div>
+</div>
